@@ -1,0 +1,26 @@
+name: docker-snap-usage-example
+base: core18
+version: "0.1"
+summary: Example of using the docker snap from another snap
+description: Example of using the docker snap from another snap
+
+grade: stable
+confinement: strict
+
+plugs:
+  docker-executables:
+    interface: content
+    target: $SNAP/docker-snap
+    default-provider: docker
+
+apps:
+  docker:
+    command: wrapper.sh
+    plugs:
+      - docker
+
+parts:
+  my-part:
+    plugin: dump
+    prime: ["wrapper.sh"]
+    source: .

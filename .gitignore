@@ -1,0 +1,5 @@
+# snap files
+*.snap
+stage/
+parts/
+prime/
